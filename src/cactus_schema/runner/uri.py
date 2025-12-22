@@ -1,0 +1,7 @@
+Initialise = "/initialise"
+Start = "/start"
+Finalize = "/finalize"
+Status = "/status"
+Health = "/health"
+Request = "/request/{request_id}"
+RequestList = "/requests"
