@@ -116,14 +116,6 @@ class StepInfo:
     started_at: datetime | None = None
     completed_at: datetime | None = None
 
-    def get_step_status(self) -> StepStatus:
-        if self.completed_at:
-            return StepStatus.RESOLVED
-        elif self.started_at:
-            return StepStatus.ACTIVE
-        else:
-            return StepStatus.PENDING
-
 
 @dataclass
 class RunnerStatus(JSONWizard):
