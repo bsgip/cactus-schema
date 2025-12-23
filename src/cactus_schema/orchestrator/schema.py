@@ -5,6 +5,7 @@ from typing import Generic, TypeVar
 
 from cactus_test_definitions.client import TestProcedureId
 from dataclass_wizard import JSONWizard
+from dataclass_wizard.enums import LetterCase
 
 HEADER_USER_NAME = "CACTUS-User-Name"
 HEADER_TEST_ID = "CACTUS-Test-Id"
@@ -23,6 +24,16 @@ class RunStatusResponse(StrEnum):
 PaginatedType = TypeVar("PaginatedType")
 
 
+class FastAPICompatibleWizard(JSONWizard):
+    """This is our way of generating JSON that FastAPI should happily interact with directly as a dataclass"""
+
+    class Meta(JSONWizard.Meta):
+        key_transform_with_dump = LetterCase.SNAKE
+        key_transform_with_load = LetterCase.SNAKE
+        encode_enum_as_value = True
+        datetime_to = "iso"
+
+
 @dataclass
 class Pagination(Generic[PaginatedType]):
     total_pages: int
@@ -36,12 +47,12 @@ class Pagination(Generic[PaginatedType]):
 
 
 @dataclass
-class InitRunRequest(JSONWizard):
+class InitRunRequest(FastAPICompatibleWizard):
     test_procedure_id: TestProcedureId
 
 
 @dataclass
-class StartRunResponse(JSONWizard):
+class StartRunResponse(FastAPICompatibleWizard):
     test_url: str
 
 
@@ -51,7 +62,7 @@ class InitRunResponse(StartRunResponse):
 
 
 @dataclass
-class RunResponse(JSONWizard):
+class RunResponse(FastAPICompatibleWizard):
     run_id: int
     test_procedure_id: str
     test_url: str
@@ -63,17 +74,17 @@ class RunResponse(JSONWizard):
 
 
 @dataclass
-class RunGroupRequest(JSONWizard):
+class RunGroupRequest(FastAPICompatibleWizard):
     csip_aus_version: str
 
 
 @dataclass
-class GenerateClientCertificateRequest(JSONWizard):
+class GenerateClientCertificateRequest(FastAPICompatibleWizard):
     is_device_cert: bool
 
 
 @dataclass
-class RunGroupUpdateRequest(JSONWizard):
+class RunGroupUpdateRequest(FastAPICompatibleWizard):
     """NOTE - this is explicitly NOT allowing updates on csip-aus version - it has too many weird considerations and
     realistically, a user should just create a new group if they want to test against a new version (there is no
     practical need to allow migrating legacy version test runs to a newer version)"""
@@ -82,7 +93,7 @@ class RunGroupUpdateRequest(JSONWizard):
 
 
 @dataclass
-class RunGroupResponse(JSONWizard):
+class RunGroupResponse(FastAPICompatibleWizard):
     run_group_id: int
     name: str
     csip_aus_version: str
@@ -96,7 +107,7 @@ class RunGroupResponse(JSONWizard):
 
 
 @dataclass
-class UserWithRunGroupsResponse(JSONWizard):
+class UserWithRunGroupsResponse(FastAPICompatibleWizard):
     """Represents a user with all their associated run groups"""
 
     user_id: int
@@ -106,14 +117,14 @@ class UserWithRunGroupsResponse(JSONWizard):
 
 
 @dataclass
-class CSIPAusVersionResponse(JSONWizard):
+class CSIPAusVersionResponse(FastAPICompatibleWizard):
     """Represents the various CSIP-Aus versions available for testing"""
 
     version: str  # Derived from the cactus_test_definitions.CSIPAusVersion enum
 
 
 @dataclass
-class TestProcedureResponse(JSONWizard):
+class TestProcedureResponse(FastAPICompatibleWizard):
     __test__ = False
     test_procedure_id: TestProcedureId
     description: str
@@ -122,7 +133,7 @@ class TestProcedureResponse(JSONWizard):
 
 
 @dataclass
-class TestProcedureRunSummaryResponse(JSONWizard):
+class TestProcedureRunSummaryResponse(FastAPICompatibleWizard):
     __test__ = False
     test_procedure_id: TestProcedureId
     description: str
@@ -136,7 +147,7 @@ class TestProcedureRunSummaryResponse(JSONWizard):
 
 
 @dataclass
-class UserConfigurationRequest(JSONWizard):
+class UserConfigurationRequest(FastAPICompatibleWizard):
     subscription_domain: str | None  # What domain will outgoing notifications be scoped to? If None - no update
     is_static_uri: (
         bool | None
@@ -145,12 +156,12 @@ class UserConfigurationRequest(JSONWizard):
 
 
 @dataclass
-class UserUpdateRequest(JSONWizard):
+class UserUpdateRequest(FastAPICompatibleWizard):
     user_name: str
 
 
 @dataclass
-class UserConfigurationResponse(JSONWizard):
+class UserConfigurationResponse(FastAPICompatibleWizard):
     subscription_domain: str  # What domain will outgoing notifications be scoped to? Empty string = no value configured
     is_static_uri: bool  # If true - all test instances will share the same URI (limit to 1 test at a time).
     pen: int

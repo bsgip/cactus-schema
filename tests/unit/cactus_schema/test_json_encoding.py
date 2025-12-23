@@ -10,7 +10,7 @@ import cactus_schema.notification as notification
 import cactus_schema.orchestrator as orchestrator
 import cactus_schema.runner as runner
 
-ALL_MODELS = [
+ALL_JSONWIZARD_MODELS = [
     t
     for (name, t) in chain(
         inspect.getmembers(runner, inspect.isclass),
@@ -28,7 +28,11 @@ def assertical_overrides():
         yield
 
 
-@pytest.mark.parametrize("t,optional_is_none", product(ALL_MODELS, [True, False]))
+def test_ALL_JSONWIZARD_MODELS():
+    assert len(ALL_JSONWIZARD_MODELS) > 10, "If this is failing - the generation of ALL_JSONWIZARD_MODELS is borked"
+
+
+@pytest.mark.parametrize("t,optional_is_none", product(ALL_JSONWIZARD_MODELS, [True, False]))
 def test_json_roundtrip(assertical_overrides, t: type[JSONWizard], optional_is_none: bool):
     """sanity check to ensure that all JSON models can roundtrip successfully via JSON"""
     for seed in [101, 202]:
