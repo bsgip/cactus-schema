@@ -1,5 +1,10 @@
 import cactus_schema.orchestrator.uri as uri
 from cactus_schema.orchestrator.schema import (
+    HEADER_GROUP_ID,
+    HEADER_GROUP_NAME,
+    HEADER_RUN_ID,
+    HEADER_TEST_ID,
+    HEADER_USER_NAME,
     CSIPAusVersionResponse,
     GenerateClientCertificateRequest,
     InitRunRequest,
@@ -21,6 +26,11 @@ from cactus_schema.orchestrator.schema import (
 
 __all__ = [
     "uri",
+    "HEADER_GROUP_ID",
+    "HEADER_GROUP_NAME",
+    "HEADER_RUN_ID",
+    "HEADER_TEST_ID",
+    "HEADER_USER_NAME",
     "CSIPAusVersionResponse",
     "GenerateClientCertificateRequest",
     "InitRunRequest",
