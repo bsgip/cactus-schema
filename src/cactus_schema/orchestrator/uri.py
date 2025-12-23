@@ -1,0 +1,33 @@
+AdminUsersList = "/admin/users"
+AdminRunGroupProceduresList = "/admin/procedure_runs/{run_group_id}"
+AdminRunGroupList = "/admin/run_group"
+AdminRunArtifact = "/admin/run/{run_id}/artifact"
+AdminRunGroupProcedureRunList = "/admin/procedure_runs/{run_group_id}/{test_procedure_id}"
+AdminRunGroupRunList = "/admin/run_group/{run_group_id}/run"
+AdminRunStatus = "/admin/run/{run_id}/status"
+AdminRun = "/admin/run/{run_id}"
+AdminRunGroupCompliance = "/admin/run_group/{run_group_id}/artifact"
+
+CertificateAuthority = "/certificate/authority"
+CertificateRunGroup = "/run_group/{run_group_id}/certificate"
+
+Config = "/config"
+
+VersionList = "/version"
+ProcedureList = "/procedure"
+Procedure = "/procedure/{test_procedure_id}"
+ProcedureRunGroupList = "/procedure_runs/{run_group_id}"
+ProcedureRunGroupRunsList = "/procedure_runs/{run_group_id}/{test_procedure_id}"
+
+RunGroupList = "/run_group"
+RunGroup = "/run_group/{run_group_id}"
+
+RunGroupRunList = "/run_group/{run_group_id}/run"
+Run = "/run/{run_id}"
+RunFinalise = "/run/{run_id}/finalise"
+RunArtifact = "/run/{run_id}/artifact"
+RunStatus = "/run/{run_id}/status"
+RunRequestList = "/run/{run_id}/requests"
+RunRequest = "/run/{run_id}/requests/{request_id}"
+
+User = "/user"
