@@ -112,9 +112,10 @@ class ClientInteraction(JSONWizard):
 
 
 @dataclass
-class StepInfo:
-    started_at: datetime | None = None
-    completed_at: datetime | None = None
+class StepEventStatus:
+    started_at: datetime | None  # When was this step event handler enabled
+    completed_at: datetime | None  # When was this step event handler completed at
+    event_status: str | None  # Status update from the event listener for this step (eg - "Waiting 30 seconds")
 
 
 @dataclass
@@ -130,7 +131,7 @@ class RunnerStatus(JSONWizard):
     precondition_checks: list[PreconditionCheckEntry] = field(default_factory=list)
     instructions: list[str] | None = field(default=None)
     test_procedure_name: str = field(default="-")  # '-' represents no active procedure
-    step_status: dict[str, StepInfo] | None = field(default=None)
+    step_status: dict[str, StepEventStatus] | None = field(default=None)
     request_history: list[RequestEntry] = field(default_factory=list)
     timeline: TimelineStatus | None = None  # Streaming timeline data snapshot
     end_device_metadata: EndDeviceMetadata | None = None  # Snapshot of current active end device (if any)
