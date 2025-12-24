@@ -115,7 +115,7 @@ class ClientInteraction(JSONWizard):
 class StepEventStatus:
     started_at: datetime | None  # When was this step event handler enabled
     completed_at: datetime | None  # When was this step event handler completed at
-    event_status: str | None  # Status update from the event listener for this step (eg - "Waiting 30 seconds")
+    event_status: str | None = None  # Status update from the event listener for this step (eg - "Waiting 30 seconds")
 
 
 @dataclass
