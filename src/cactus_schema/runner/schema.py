@@ -13,6 +13,7 @@ class ClientInteractionType(StrEnum):
     TEST_PROCEDURE_INIT = "Test Procedure Initialised"
     TEST_PROCEDURE_START = "Test Procedure Started"
     PROXIED_REQUEST = "Request Proxied"
+    TEST_PROCEDURE_FINALIZED = "TEST_PROCEDURE_FINALIZED"
 
 
 class StepStatus(Enum):
