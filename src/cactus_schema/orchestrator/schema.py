@@ -71,6 +71,7 @@ class RunResponse(FastAPICompatibleWizard):
     created_at: datetime
     finalised_at: datetime | None
     is_device_cert: bool  # Whether this run was initialised with the device cert or aggregator cert
+    has_artifacts: bool  # Whether this run has artifacts available (False if not finalized or there was an failure during finalization)
 
 
 @dataclass
