@@ -48,7 +48,19 @@ class Pagination(Generic[PaginatedType]):
 
 @dataclass
 class InitRunRequest(FastAPICompatibleWizard):
-    test_procedure_id: TestProcedureId
+    test_procedure_id: TestProcedureId | None = (
+        None  # Single test (for backwards compatibility only, use test_procedure_ids)
+    )
+    test_procedure_ids: list[TestProcedureId] | None = None  # List of tests (playlist if >1)
+
+
+@dataclass
+class PlaylistRunInfo(FastAPICompatibleWizard):
+    """Summary info for a run within a playlist"""
+
+    run_id: int
+    test_procedure_id: str
+    playlist_order: int
 
 
 @dataclass
@@ -59,6 +71,8 @@ class StartRunResponse(FastAPICompatibleWizard):
 @dataclass
 class InitRunResponse(StartRunResponse):
     run_id: int
+    playlist_execution_id: str | None = None  # Set if this is a playlist
+    playlist_runs: list[PlaylistRunInfo] | None = None  # All runs in playlist order
 
 
 @dataclass
@@ -71,7 +85,10 @@ class RunResponse(FastAPICompatibleWizard):
     created_at: datetime
     finalised_at: datetime | None
     is_device_cert: bool  # Whether this run was initialised with the device cert or aggregator cert
-    has_artifacts: bool  # Whether this run has artifacts available (False if not finalized or there was an failure during finalization)
+    has_artifacts: bool  # Whether run has artifacts available (False if not finalized or failure during finalization)
+    playlist_execution_id: str | None = None  # Set if this run is part of a playlist
+    playlist_order: int | None = None  # 0-based position in playlist
+    playlist_total: int | None = None  # Total runs in playlist
 
 
 @dataclass
