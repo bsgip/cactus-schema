@@ -60,7 +60,6 @@ class PlaylistRunInfo(FastAPICompatibleWizard):
 
     run_id: int
     test_procedure_id: str
-    playlist_order: int
 
 
 @dataclass
