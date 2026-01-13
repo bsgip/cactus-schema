@@ -10,6 +10,7 @@ AdminRunGroupCompliance = "/admin/run_group/{run_group_id}/artifact"
 
 CertificateAuthority = "/certificate/authority"
 CertificateRunGroup = "/run_group/{run_group_id}/certificate"
+CertificateRunGroups = "/run_group/certificate"
 
 Config = "/config"
 
