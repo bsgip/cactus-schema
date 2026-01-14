@@ -53,6 +53,7 @@ class InitRunRequest(FastAPICompatibleWizard):
         None  # Single test (for backwards compatibility only, use test_procedure_ids)
     )
     test_procedure_ids: list[TestProcedureId] | None = None  # List of tests (playlist if >1)
+    start_index: int | None = None  # 0-based index to start execution from (for playlists)
 
 
 @dataclass
