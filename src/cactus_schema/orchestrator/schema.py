@@ -19,6 +19,7 @@ class RunStatusResponse(StrEnum):
     started = auto()
     finalised = auto()
     provisioning = auto()
+    skipped = auto()
 
 
 PaginatedType = TypeVar("PaginatedType")
