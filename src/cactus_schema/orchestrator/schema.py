@@ -62,6 +62,7 @@ class PlaylistRunInfo(FastAPICompatibleWizard):
 
     run_id: int
     test_procedure_id: str
+    status: RunStatusResponse
 
 
 @dataclass
@@ -89,7 +90,7 @@ class RunResponse(FastAPICompatibleWizard):
     has_artifacts: bool  # Whether run has artifacts available (False if not finalized or failure during finalization)
     playlist_execution_id: str | None = None  # Set if this run is part of a playlist
     playlist_order: int | None = None  # 0-based position in playlist
-    playlist_total: int | None = None  # Total runs in playlist
+    playlist_runs: list[PlaylistRunInfo] | None = None  # All runs in playlist with status
 
 
 @dataclass
