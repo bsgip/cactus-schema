@@ -31,5 +31,6 @@ RunArtifact = "/run/{run_id}/artifact"
 RunStatus = "/run/{run_id}/status"
 RunRequestList = "/run/{run_id}/requests"
 RunRequest = "/run/{run_id}/requests/{request_id}"
+RunArtifactMultiple = "/run/artifact/multiple"
 
 User = "/user"

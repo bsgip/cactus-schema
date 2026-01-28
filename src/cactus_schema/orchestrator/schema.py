@@ -94,6 +94,11 @@ class RunResponse(FastAPICompatibleWizard):
 
 
 @dataclass
+class RunArtifactMultipleRequest(FastAPICompatibleWizard):
+    run_ids: list[int]
+
+
+@dataclass
 class RunGroupRequest(FastAPICompatibleWizard):
     csip_aus_version: str
 
