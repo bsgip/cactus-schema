@@ -20,6 +20,8 @@ Procedure = "/procedure/{test_procedure_id}"
 ProcedureRunGroupList = "/procedure_runs/{run_group_id}"
 ProcedureRunGroupRunsList = "/procedure_runs/{run_group_id}/{test_procedure_id}"
 
+Proceed = "/proceed"
+
 RunGroupList = "/run_group"
 RunGroup = "/run_group/{run_group_id}"
 
