@@ -20,8 +20,6 @@ Procedure = "/procedure/{test_procedure_id}"
 ProcedureRunGroupList = "/procedure_runs/{run_group_id}"
 ProcedureRunGroupRunsList = "/procedure_runs/{run_group_id}/{test_procedure_id}"
 
-Proceed = "/proceed"
-
 RunGroupList = "/run_group"
 RunGroup = "/run_group/{run_group_id}"
 
@@ -34,5 +32,6 @@ RunStatus = "/run/{run_id}/status"
 RunRequestList = "/run/{run_id}/requests"
 RunRequest = "/run/{run_id}/requests/{request_id}"
 RunArtifactMultiple = "/run/artifact/multiple"
+RunProceed = "/run/{run_id}/proceed"
 
 User = "/user"
