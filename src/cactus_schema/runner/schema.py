@@ -80,6 +80,54 @@ class TimelineStatus(JSONWizard):
 
 
 @dataclass
+class DERCapabilityInfo(JSONWizard):
+    """Snapshot of DERCapability for UI display"""
+
+    der_type: str | None = None  # e.g. "PHOTOVOLTAIC_SYSTEM", "COMBINED_PV_AND_STORAGE"
+    modes_supported: list[str] | None = None  # Active DERControlType flag names
+    max_w: int | None = None
+    max_va: int | None = None
+    max_var: int | None = None
+    max_var_neg: int | None = None
+    max_a: int | None = None
+    max_charge_rate_w: int | None = None
+    max_discharge_rate_w: int | None = None
+    max_wh: int | None = None
+    doe_modes_supported: list[str] | None = None  # Active DOESupportedMode flag names
+
+
+@dataclass
+class DERSettingsInfo(JSONWizard):
+    """Snapshot of DERSettings for UI display"""
+
+    modes_enabled: list[str] | None = None  # Active DERControlType flag names
+    max_w: int | None = None
+    max_va: int | None = None
+    max_var: int | None = None
+    max_var_neg: int | None = None
+    max_charge_rate_w: int | None = None
+    max_discharge_rate_w: int | None = None
+    grad_w: int | None = None  # Ramp rate (%setMaxW/second)
+    doe_modes_enabled: list[str] | None = None  # Active DOESupportedMode flag names
+
+
+@dataclass
+class DERStatusInfo(JSONWizard):
+    """Snapshot of current DER real-time status (from SiteDERStatus / sep2 DERStatus).
+    Bitmaps/enums resolved to strings."""
+
+    alarm_status: list[str] | None = None  # Active AlarmStatusType flag names
+    inverter_status: str | None = None  # InverterStatusType enum name
+    operational_mode_status: str | None = None  # OperationalModeStatusType enum name
+    generator_connect_status: list[str] | None = None  # Active ConnectStatusType flag names
+    storage_connect_status: list[str] | None = None  # Active ConnectStatusType flag names
+    storage_mode_status: str | None = None  # StorageModeStatusType enum name
+    state_of_charge_status: int | None = None  # Percent
+    local_control_mode_status: str | None = None  # LocalControlModeStatusType enum name
+    manufacturer_status: str | None = None  # Up to 6 chars
+
+
+@dataclass
 class EndDeviceMetadata(JSONWizard):  # All optional as a device may not always be registered
     edevid: int | None = None  # Should always be 1, but nice to check
     lfdi: str | None = None
@@ -90,6 +138,9 @@ class EndDeviceMetadata(JSONWizard):  # All optional as a device may not always 
     doe_modes_enabled: int | None = None
     device_category: int | None = None
     timezone_id: str | None = None
+    der_capability: DERCapabilityInfo | None = None
+    der_settings: DERSettingsInfo | None = None
+    der_status: DERStatusInfo | None = None
 
 
 @dataclass
