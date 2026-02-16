@@ -7,6 +7,7 @@ AdminRunGroupRunList = "/admin/run_group/{run_group_id}/run"
 AdminRunStatus = "/admin/run/{run_id}/status"
 AdminRun = "/admin/run/{run_id}"
 AdminRunGroupCompliance = "/admin/run_group/{run_group_id}/artifact"
+AdminStats = "/admin/stats"
 
 CertificateAuthority = "/certificate/authority"
 CertificateRunGroup = "/run_group/{run_group_id}/certificate"

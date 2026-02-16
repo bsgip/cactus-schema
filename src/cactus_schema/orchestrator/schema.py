@@ -172,6 +172,20 @@ class TestProcedureRunSummaryResponse(FastAPICompatibleWizard):
 
 
 @dataclass
+class AdminStatsResponse(FastAPICompatibleWizard):
+    total_runs: int
+    max_run_id: int
+    total_passed: int
+    total_failed: int
+    total_users: int
+    total_run_groups: int
+    version_counts: dict[str, int]  # csip_aus_version -> count
+    runs_per_week: dict[str, int]  # "2026-W07" -> count
+    runs_per_user: dict[str, int]  # user_name -> count
+    procedures: list[dict]  # top 20, each a plain dict
+
+
+@dataclass
 class UserConfigurationRequest(FastAPICompatibleWizard):
     subscription_domain: str | None  # What domain will outgoing notifications be scoped to? If None - no update
     is_static_uri: (
