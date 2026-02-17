@@ -205,3 +205,8 @@ class UserConfigurationResponse(FastAPICompatibleWizard):
     is_static_uri: bool  # If true - all test instances will share the same URI (limit to 1 test at a time).
     pen: int
     static_uri: str | None  # What the static URI will be for this user (readonly and only set if is_static_uri is True)
+
+
+@dataclass
+class ProceedResponse(FastAPICompatibleWizard):
+    handled: bool  # If true, the proceed signal matched a listener and moved the test to the next step
