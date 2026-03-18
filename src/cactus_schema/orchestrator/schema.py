@@ -155,6 +155,7 @@ class TestProcedureResponse(FastAPICompatibleWizard):
     description: str
     category: str
     classes: list[str]
+    target_versions: list[str]  # Derived from the cactus_test_definitions.CSIPAusVersion enum
 
 
 @dataclass
