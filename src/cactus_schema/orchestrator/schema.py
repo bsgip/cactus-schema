@@ -211,3 +211,12 @@ class UserConfigurationResponse(FastAPICompatibleWizard):
 @dataclass
 class ProceedResponse(FastAPICompatibleWizard):
     handled: bool  # If true, the proceed signal matched a listener and moved the test to the next step
+
+
+@dataclass
+class ComplianceRequestResponse(FastAPICompatibleWizard):
+    compliance_request_id: int
+    created_at: datetime
+    user_details: str
+    request_details: str
+    status: str
