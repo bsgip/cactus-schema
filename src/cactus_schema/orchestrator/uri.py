@@ -35,5 +35,6 @@ RunRequestList = "/run/{run_id}/requests"
 RunRequest = "/run/{run_id}/requests/{request_id}"
 RunArtifactMultiple = "/run/artifact/multiple"
 RunProceed = "/run/{run_id}/proceed"
+RunPowerLimitChart = "/run/{run_id}/power_limit_chart"
 
 User = "/user"
