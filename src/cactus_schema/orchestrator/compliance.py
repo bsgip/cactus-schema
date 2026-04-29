@@ -34,12 +34,12 @@ COMPLIANCE_CLASS_ORDERED: list[tuple[str, ComplianceClass]] = [
         ),
     ),
     (
-        "STOR",
-        ComplianceClass("STOR", "Clients conforming to the Annex G storage extensions."),
+        "STO",
+        ComplianceClass("STO", "Clients conforming to the Annex G storage extensions."),
     ),
     (
-        "DER-STOR",
-        ComplianceClass("DER-STOR", "DER conforming to the Annex G storage extensions."),
+        "DER-STO",
+        ComplianceClass("DER-STO", "DER conforming to the Annex G storage extensions."),
     ),
     (
         "PRC",
