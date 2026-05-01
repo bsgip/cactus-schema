@@ -214,15 +214,6 @@ class ProceedResponse(FastAPICompatibleWizard):
 
 
 @dataclass
-class ComplianceRequestResponse(FastAPICompatibleWizard):
-    compliance_request_id: int
-    created_at: datetime
-    user_details: str
-    request_details: str
-    status: str
-
-
-@dataclass
 class ComplianceRequestContentResponse(FastAPICompatibleWizard):
     compliance_standard: str
     witness_test: datetime
@@ -236,3 +227,28 @@ class ComplianceRequestContentResponse(FastAPICompatibleWizard):
     software_providers: str
     software_versions: str
     hardware_details: str
+
+
+@dataclass
+class ComplianceRequestRequest(FastAPICompatibleWizard):
+    csipaus_version: str
+    witnesstesting_date: datetime
+    compliance_classes: list[str]
+    run_ids: list[int]
+    der_brand: str
+    der_oem: str
+    der_series: str
+    der_representative_models: str
+    software_client_type: str
+    software_client_providers: str
+    software_client_versions: str
+    onsite_hardware_details: str
+
+
+@dataclass
+class ComplianceRequestResponse(FastAPICompatibleWizard):
+    compliance_request_id: int
+    created_at: datetime
+    user_details: str
+    request_details: str
+    status: str

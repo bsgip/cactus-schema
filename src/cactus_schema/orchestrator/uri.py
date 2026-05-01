@@ -18,6 +18,9 @@ CertificateRunGroups = "/run_group/certificate"
 
 Config = "/config"
 
+ComplianceRequestList = "/compliance_request/"
+ComplianceRequest = "/compliance_request/{compliance_request_id}"
+
 VersionList = "/version"
 ProcedureList = "/procedure"
 Procedure = "/procedure/{test_procedure_id}"
