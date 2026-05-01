@@ -91,6 +91,7 @@ class RunResponse(FastAPICompatibleWizard):
     playlist_execution_id: str | None = None  # Set if this run is part of a playlist
     playlist_order: int | None = None  # 0-based position in playlist
     playlist_runs: list[PlaylistRunInfo] | None = None  # All runs in playlist with status
+    classes: list[str] | None = None  # Compliance classes for this run's test procedure
 
 
 @dataclass
@@ -170,6 +171,7 @@ class TestProcedureRunSummaryResponse(FastAPICompatibleWizard):
     latest_run_status: int | None  # RunStatus of the most recent Run
     latest_run_id: int | None  # run_id of the most recent Run
     latest_run_timestamp: datetime | None  # timestamp of the most recent Run
+    immediate_start: bool = False  # True if test has no pre-start phase
 
 
 @dataclass

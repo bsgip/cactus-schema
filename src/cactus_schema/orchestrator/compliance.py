@@ -33,6 +33,22 @@ COMPLIANCE_CLASS_ORDERED: list[tuple[str, ComplianceClass]] = [
             "DR-G", "Clients managing generation-type or storage-type products with demand response capabilities."
         ),
     ),
+    (
+        "STO",
+        ComplianceClass("STO", "Clients conforming to the Annex G storage extensions."),
+    ),
+    (
+        "DER-STO",
+        ComplianceClass("DER-STO", "DER conforming to the Annex G storage extensions."),
+    ),
+    (
+        "PRC",
+        ComplianceClass("PRC", "Clients conforming to the Annex F pricing extensions."),
+    ),
+    (
+        "P-A",
+        ComplianceClass("P-A", "Provisional tests drafted as part of community consultation."),
+    ),
 ]
 
 
