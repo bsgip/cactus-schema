@@ -1,7 +1,6 @@
 from dataclasses import dataclass
 from datetime import datetime
 from enum import StrEnum, auto
-from typing import Generic, TypeVar
 
 from cactus_test_definitions.client import TestProcedureId
 from dataclass_wizard import JSONWizard
@@ -32,11 +31,8 @@ class FastAPICompatibleWizard(JSONWizard):
         datetime_to = "iso"
 
 
-PaginatedType = TypeVar("PaginatedType")
-
-
 @dataclass
-class Pagination(Generic[PaginatedType]):  # noqa: UP046
+class Pagination[PaginatedType]:
     total_pages: int
     total_items: int
     page_size: int
