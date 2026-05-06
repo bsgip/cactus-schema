@@ -41,6 +41,7 @@ __all__ = [
     "GenerateClientCertificateRequest",
     "InitRunRequest",
     "InitRunResponse",
+    "PaginatedType",
     "Pagination",
     "PlaylistRunInfo",
     "ProceedResponse",
