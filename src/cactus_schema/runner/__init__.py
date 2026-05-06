@@ -1,4 +1,8 @@
 import cactus_schema.runner.uri as uri
+
+# The same ProceedResponse Model is used for responses from both the runner AND the orchestrator.
+# It is defined once in `cactus_schema.orchestrator` and re-exported here for clients of the runner.
+from cactus_schema.orchestrator import ProceedResponse
 from cactus_schema.runner.schema import (
     ClientInteraction,
     ClientInteractionType,
@@ -27,10 +31,6 @@ from cactus_schema.runner.schema import (
     TimelineDataStreamEntry,
     TimelineStatus,
 )
-
-# The same ProceedResponse Model is used for responses from both the runner AND the orchestrator.
-# It is defined once in `cactus_schema.orchestrator` and re-exported here for clients of the runner.
-from cactus_schema.orchestrator import ProceedResponse
 
 __all__ = [
     "uri",
