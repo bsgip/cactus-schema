@@ -1,7 +1,6 @@
 from dataclasses import dataclass
 from datetime import datetime
 from enum import StrEnum, auto
-from typing import Generic, TypeVar
 
 from cactus_test_definitions.client import TestProcedureId
 from dataclass_wizard import JSONWizard
@@ -22,9 +21,6 @@ class RunStatusResponse(StrEnum):
     skipped = auto()
 
 
-PaginatedType = TypeVar("PaginatedType")
-
-
 class FastAPICompatibleWizard(JSONWizard):
     """This is our way of generating JSON that FastAPI should happily interact with directly as a dataclass"""
 
@@ -36,7 +32,7 @@ class FastAPICompatibleWizard(JSONWizard):
 
 
 @dataclass
-class Pagination(Generic[PaginatedType]):
+class Pagination[PaginatedType]:
     total_pages: int
     total_items: int
     page_size: int
