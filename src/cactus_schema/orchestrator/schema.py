@@ -233,10 +233,10 @@ class ComplianceRequestContentResponse(FastAPICompatibleWizard):
 
 @dataclass
 class ComplianceRequestRequest(FastAPICompatibleWizard):
-    csipaus_version: str
-    witnesstesting_date: datetime
-    compliance_classes: list[str]
-    run_ids: list[int]
+    csip_aus_version: str
+    witnessed_at: datetime
+    classes: set[str]
+    runs: set[int]
     der_brand: str
     der_oem: str
     der_series: str
@@ -251,6 +251,36 @@ class ComplianceRequestRequest(FastAPICompatibleWizard):
 class ComplianceRequestResponse(FastAPICompatibleWizard):
     compliance_request_id: int
     created_at: datetime
-    user_details: str
-    request_details: str
-    status: str
+    created_by: int
+    updated_at: datetime
+    updated_by: int
+    status: int
+    classes: set[str]
+    runs: set[int]
+    csip_aus_version: str
+    witnessed_at: datetime
+    der_brand: str
+    der_oem: str
+    der_series: str
+    der_representative_models: str
+    software_client_type: str
+    software_client_providers: str
+    software_client_versions: str
+    onsite_hardware_details: str
+
+
+@dataclass
+class ComplianceRequestUpdateRequest(FastAPICompatibleWizard):
+    status: int | None = None
+    classes: set[str] | None = None
+    runs: set[int] | None = None
+    csip_aus_version: str | None = None
+    witnessed_at: datetime | None = None
+    der_brand: str | None = None
+    der_oem: str | None = None
+    der_series: str | None = None
+    der_representative_models: str | None = None
+    software_client_type: str | None = None
+    software_client_providers: str | None = None
+    software_client_versions: str | None = None
+    onsite_hardware_details: str | None = None
