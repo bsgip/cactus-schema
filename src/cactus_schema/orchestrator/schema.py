@@ -212,22 +212,6 @@ class ProceedResponse(FastAPICompatibleWizard):
 
 
 @dataclass
-class ComplianceRequestContentResponse(FastAPICompatibleWizard):
-    compliance_standard: str
-    witness_test: datetime
-    classes: list[str]
-    runs: list[int]
-    der_brand: str
-    der_oem: str
-    der_series: str
-    der_repmodels: str
-    software_type: str
-    software_providers: str
-    software_versions: str
-    hardware_details: str
-
-
-@dataclass
 class ComplianceRequestRequest(FastAPICompatibleWizard):
     csip_aus_version: str
     witnessed_at: datetime
