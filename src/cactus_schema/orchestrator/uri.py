@@ -29,8 +29,9 @@ ProcedureRunGroupRunsList = "/procedure_runs/{run_group_id}/{test_procedure_id}"
 
 RunGroupList = "/run_group"
 RunGroup = "/run_group/{run_group_id}"
-
 RunGroupRunList = "/run_group/{run_group_id}/run"
+
+RunList = "/run"
 Run = "/run/{run_id}"
 RunFinalise = "/run/{run_id}/finalise"
 RunPlaylistFinalise = "/run/{run_id}/finalise_playlist"
