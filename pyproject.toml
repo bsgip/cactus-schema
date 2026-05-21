@@ -50,7 +50,7 @@ version = { attr = "cactus_schema.__version__" }
 readme = { file = ["README.md"], content-type = "text/markdown" }
 
 [project.optional-dependencies]
-dev = ["bandit", "coverage", "ty", "ruff"]
+dev = ["bandit", "coverage", "ty", "ruff", "pytest-cov"]
 test = ["pytest", "pytest-xdist", "assertical"]
 
 [tool.setuptools.package-data]
