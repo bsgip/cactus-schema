@@ -9,28 +9,57 @@ class ComplianceClass:
 
 # This is an adapted version of TS 5573 Table 12.5 - Applicability of tests to classes of DER client
 COMPLIANCE_CLASS_ORDERED: list[tuple[str, ComplianceClass]] = [
-    ("A", ComplianceClass("A", "All clients managing DER (Excluding demand response).")),
-    ("G", ComplianceClass("G", "Clients managing generation-type or storage-type DER.")),
+    (
+        "A",
+        ComplianceClass("A", "All clients managing DER (Excluding demand response)."),
+    ),
+    (
+        "G",
+        ComplianceClass("G", "Clients managing generation-type or storage-type DER."),
+    ),
     ("L", ComplianceClass("L", "Clients managing load-type or storage-type DER.")),
-    ("C", ComplianceClass("C", "Clients conforming with the optional ConnectionPoint extension.")),
-    ("S-L", ComplianceClass("S-L", "Clients implementing Subscription/Notification functionality AND L class.")),
-    ("S-G", ComplianceClass("S-G", "Clients implementing Subscription/Notification functionality AND G class.")),
+    (
+        "C",
+        ComplianceClass("C", "Clients conforming with the optional ConnectionPoint extension."),
+    ),
+    (
+        "S-L",
+        ComplianceClass(
+            "S-L",
+            "Clients implementing Subscription/Notification functionality AND L class.",
+        ),
+    ),
+    (
+        "S-G",
+        ComplianceClass(
+            "S-G",
+            "Clients implementing Subscription/Notification functionality AND G class.",
+        ),
+    ),
     ("M", ComplianceClass("M", "Clients supporting management of sets of DER.")),
     ("DER-A", ComplianceClass("DER-A", "All DER.")),
     ("DER-G", ComplianceClass("DER-G", "All DER capable of generation.")),
     ("DER-L", ComplianceClass("DER-L", "All DER capable of consumption.")),
     ("DR-A", ComplianceClass("DR-A", "All clients managing demand response devices.")),
-    ("DR-D", ComplianceClass("DR-D", "Clients managing or incorporated into DRED demand response devices.")),
+    (
+        "DR-D",
+        ComplianceClass(
+            "DR-D",
+            "Clients managing or incorporated into DRED demand response devices.",
+        ),
+    ),
     (
         "DR-L",
         ComplianceClass(
-            "DR-L", "Clients managing load-type or storage-type products with demand response capabilities."
+            "DR-L",
+            "Clients managing load-type or storage-type products with demand response capabilities.",
         ),
     ),
     (
         "DR-G",
         ComplianceClass(
-            "DR-G", "Clients managing generation-type or storage-type products with demand response capabilities."
+            "DR-G",
+            "Clients managing generation-type or storage-type products with demand response capabilities.",
         ),
     ),
     (
