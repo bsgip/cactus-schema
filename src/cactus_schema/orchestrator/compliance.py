@@ -38,8 +38,11 @@ COMPLIANCE_CLASS_ORDERED: list[tuple[str, ComplianceClass]] = [
     ),
     ("M", ComplianceClass("M", "Clients supporting management of sets of DER.")),
     ("DER-A", ComplianceClass("DER-A", "All DER.")),
+    ("DER-A-ALT", ComplianceClass("DER-A-ALT", "Alternatives to specific DER-A tests (for specific DER).")),
     ("DER-G", ComplianceClass("DER-G", "All DER capable of generation.")),
+    ("DER-G-ALT", ComplianceClass("DER-G-ALT", "Alternatives to specific DER-G tests (for specific DER).")),
     ("DER-L", ComplianceClass("DER-L", "All DER capable of consumption.")),
+    ("DER-L-ALT", ComplianceClass("DER-L-ALT", "Alternatives to specific DER-L tests (for specific DER).")),
     ("DR-A", ComplianceClass("DR-A", "All clients managing demand response devices.")),
     (
         "DR-D",
