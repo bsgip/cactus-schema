@@ -209,3 +209,90 @@ class UserConfigurationResponse(FastAPICompatibleWizard):
 @dataclass
 class ProceedResponse(FastAPICompatibleWizard):
     handled: bool  # If true, the proceed signal matched a listener and moved the test to the next step
+
+
+@dataclass
+class ComplianceRequestRequest(FastAPICompatibleWizard):
+    csip_aus_version: str
+    witnessed_at: datetime
+    classes: set[str]
+    runs: set[int]
+    der_brand: str
+    der_oem: str
+    der_series: str
+    der_representative_models: str
+    software_client_type: str
+    software_client_providers: str
+    software_client_versions: str
+    onsite_hardware_details: str
+
+
+@dataclass
+class ComplianceRequestResponse(FastAPICompatibleWizard):
+    compliance_request_id: int
+    created_at: datetime
+    created_by: int
+    updated_at: datetime
+    updated_by: int
+    status: int
+    classes: set[str]
+    runs: set[int]
+    csip_aus_version: str
+    witnessed_at: datetime
+    der_brand: str
+    der_oem: str
+    der_series: str
+    der_representative_models: str
+    software_client_type: str
+    software_client_providers: str
+    software_client_versions: str
+    onsite_hardware_details: str
+
+
+@dataclass
+class ComplianceRequestUser(FastAPICompatibleWizard):
+    user_id: int
+    subject_id: str
+    issuer_id: str
+    user_name: str | None
+
+
+@dataclass
+class AdminComplianceRequestResponse(FastAPICompatibleWizard):
+    compliance_request_id: int
+    created_at: datetime
+    created_by: int
+    created_by_user: ComplianceRequestUser
+    updated_at: datetime
+    updated_by: int
+    updated_by_user: ComplianceRequestUser
+    status: int
+    classes: set[str]
+    runs: set[int]
+    csip_aus_version: str
+    witnessed_at: datetime
+    der_brand: str
+    der_oem: str
+    der_series: str
+    der_representative_models: str
+    software_client_type: str
+    software_client_providers: str
+    software_client_versions: str
+    onsite_hardware_details: str
+
+
+@dataclass
+class ComplianceRequestUpdateRequest(FastAPICompatibleWizard):
+    status: int | None = None
+    classes: set[str] | None = None
+    runs: set[int] | None = None
+    csip_aus_version: str | None = None
+    witnessed_at: datetime | None = None
+    der_brand: str | None = None
+    der_oem: str | None = None
+    der_series: str | None = None
+    der_representative_models: str | None = None
+    software_client_type: str | None = None
+    software_client_providers: str | None = None
+    software_client_versions: str | None = None
+    onsite_hardware_details: str | None = None

@@ -1,3 +1,5 @@
+AdminComplianceRequestList = "/admin/compliance_request"
+AdminComplianceRequest = "/admin/compliance_request/{compliance_request_id}"
 AdminUsersList = "/admin/users"
 AdminRunGroupProceduresList = "/admin/procedure_runs/{run_group_id}"
 AdminRunGroupList = "/admin/run_group"
@@ -18,6 +20,9 @@ CertificateRunGroups = "/run_group/certificate"
 
 Config = "/config"
 
+ComplianceRequestList = "/compliance_request/"
+ComplianceRequest = "/compliance_request/{compliance_request_id}"
+
 VersionList = "/version"
 ProcedureList = "/procedure"
 Procedure = "/procedure/{test_procedure_id}"
@@ -26,8 +31,9 @@ ProcedureRunGroupRunsList = "/procedure_runs/{run_group_id}/{test_procedure_id}"
 
 RunGroupList = "/run_group"
 RunGroup = "/run_group/{run_group_id}"
-
 RunGroupRunList = "/run_group/{run_group_id}/run"
+
+RunList = "/run"
 Run = "/run/{run_id}"
 RunFinalise = "/run/{run_id}/finalise"
 RunPlaylistFinalise = "/run/{run_id}/finalise_playlist"
