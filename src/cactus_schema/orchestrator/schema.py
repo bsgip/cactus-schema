@@ -98,6 +98,7 @@ class RunArtifactMultipleRequest(FastAPICompatibleWizard):
 @dataclass
 class RunGroupRequest(FastAPICompatibleWizard):
     csip_aus_version: str
+    is_static_uri: bool
 
 
 @dataclass
@@ -112,6 +113,7 @@ class RunGroupUpdateRequest(FastAPICompatibleWizard):
     practical need to allow migrating legacy version test runs to a newer version)"""
 
     name: str | None  # If non null - update the RunGroup receiving this request
+    is_static_uri: bool | None  # If non null - update the RunGroup receiving this request
 
 
 @dataclass
@@ -120,6 +122,9 @@ class RunGroupResponse(FastAPICompatibleWizard):
     name: str
     csip_aus_version: str
     created_at: datetime
+
+    is_static_uri: bool
+    static_uri: str | None  # What the static URI will be for this user (readonly and only set if is_static_uri is True)
 
     is_device_cert: bool | None
     certificate_id: int | None
@@ -187,9 +192,6 @@ class AdminStatsResponse(FastAPICompatibleWizard):
 @dataclass
 class UserConfigurationRequest(FastAPICompatibleWizard):
     subscription_domain: str | None  # What domain will outgoing notifications be scoped to? If None - no update
-    is_static_uri: (
-        bool | None
-    )  # If true - all test instances will share the same URI (limit to 1 test at a time). If None - no update
     pen: int | None
 
 
@@ -201,9 +203,7 @@ class UserUpdateRequest(FastAPICompatibleWizard):
 @dataclass
 class UserConfigurationResponse(FastAPICompatibleWizard):
     subscription_domain: str  # What domain will outgoing notifications be scoped to? Empty string = no value configured
-    is_static_uri: bool  # If true - all test instances will share the same URI (limit to 1 test at a time).
     pen: int
-    static_uri: str | None  # What the static URI will be for this user (readonly and only set if is_static_uri is True)
 
 
 @dataclass
