@@ -1,5 +1,6 @@
 AdminComplianceRequestList = "/admin/compliance_request"
 AdminComplianceRequest = "/admin/compliance_request/{compliance_request_id}"
+AdminComplianceRequestArtifact = "/admin/compliance_request/{compliance_request_id}/artifact"
 AdminUsersList = "/admin/users"
 AdminRunGroupProceduresList = "/admin/procedure_runs/{run_group_id}"
 AdminRunGroupList = "/admin/run_group"
@@ -22,6 +23,7 @@ Config = "/config"
 
 ComplianceRequestList = "/compliance_request/"
 ComplianceRequest = "/compliance_request/{compliance_request_id}"
+ComplianceRequestArtifact = "/compliance_request/{compliance_request_id}/artifact"
 
 VersionList = "/version"
 ProcedureList = "/procedure"
