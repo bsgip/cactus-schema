@@ -88,6 +88,7 @@ class RunResponse(FastAPICompatibleWizard):
     playlist_order: int | None = None  # 0-based position in playlist
     playlist_runs: list[PlaylistRunInfo] | None = None  # All runs in playlist with status
     classes: list[str] | None = None  # Compliance classes for this run's test procedure
+    immediate_start: bool = False  # True if the test procedure has no pre-start phase
 
 
 @dataclass
