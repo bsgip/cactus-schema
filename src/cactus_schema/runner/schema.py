@@ -4,7 +4,6 @@ from enum import Enum, StrEnum, auto
 from http import HTTPMethod, HTTPStatus
 
 from cactus_test_definitions import CSIPAusVersion
-from cactus_test_definitions.client import TestProcedureId
 from dataclass_wizard import JSONWizard
 
 
@@ -197,7 +196,7 @@ class RequestList(JSONWizard):
 
 @dataclass
 class TestDefinition(JSONWizard):
-    test_procedure_id: TestProcedureId
+    test_procedure_id: str
     yaml_definition: str
 
 
