@@ -89,6 +89,20 @@ class RunResponse(FastAPICompatibleWizard):
 
 
 @dataclass
+class UpdatePlaylistRequest(FastAPICompatibleWizard):
+    """The desired upcoming (not-yet-run) tail of an executing playlist, in order. The existing upcoming
+    runs are deleted and recreated from this list; completed/active runs are unaffected."""
+
+    test_procedure_ids: list[TestProcedureId]
+    expected_active_run_id: int  # Run id the caller believes is active - mismatch means the playlist advanced (409)
+
+
+@dataclass
+class UpdatePlaylistResponse(FastAPICompatibleWizard):
+    playlist_runs: list[PlaylistRunInfo]  # The full playlist, in order, after the update
+
+
+@dataclass
 class RunArtifactMultipleRequest(FastAPICompatibleWizard):
     run_ids: list[int]
 
