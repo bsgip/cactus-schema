@@ -9,3 +9,4 @@ Proceed = "/proceed"
 
 # This should be hosted at the root path
 CSIPAusWellKnown = "/.well-known/csipaus"
+NextTest = "/next-test"
