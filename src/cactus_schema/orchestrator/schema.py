@@ -2,7 +2,6 @@ from dataclasses import dataclass
 from datetime import datetime
 from enum import StrEnum, auto
 
-from cactus_test_definitions.client import TestProcedureId
 from dataclass_wizard import JSONWizard
 from dataclass_wizard.enums import LetterCase
 
@@ -45,10 +44,8 @@ class Pagination[PaginatedType]:
 
 @dataclass
 class InitRunRequest(FastAPICompatibleWizard):
-    test_procedure_id: TestProcedureId | None = (
-        None  # Single test (for backwards compatibility only, use test_procedure_ids)
-    )
-    test_procedure_ids: list[TestProcedureId] | None = None  # List of tests (playlist if >1)
+    test_procedure_id: str | None = None  # Single test (for backwards compatibility only, use test_procedure_ids)
+    test_procedure_ids: list[str] | None = None  # List of tests (playlist if >1)
     start_index: int | None = None  # 0-based index to start execution from (for playlists)
 
 
@@ -154,7 +151,7 @@ class CSIPAusVersionResponse(FastAPICompatibleWizard):
 @dataclass
 class TestProcedureResponse(FastAPICompatibleWizard):
     __test__ = False
-    test_procedure_id: TestProcedureId
+    test_procedure_id: str
     description: str
     category: str
     classes: list[str]
@@ -164,7 +161,7 @@ class TestProcedureResponse(FastAPICompatibleWizard):
 @dataclass
 class TestProcedureRunSummaryResponse(FastAPICompatibleWizard):
     __test__ = False
-    test_procedure_id: TestProcedureId
+    test_procedure_id: str
     description: str
     category: str
     classes: list[str] | None

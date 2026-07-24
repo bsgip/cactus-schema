@@ -3,7 +3,6 @@ from datetime import datetime
 from enum import Enum, StrEnum, auto
 from http import HTTPMethod, HTTPStatus
 
-from cactus_test_definitions import CSIPAusVersion
 from dataclass_wizard import JSONWizard
 
 
@@ -214,7 +213,7 @@ class TestCertificates(JSONWizard):
 class RunGroup(JSONWizard):
     run_group_id: str
     name: str
-    csip_aus_version: CSIPAusVersion
+    csip_aus_version: str
     test_certificates: TestCertificates
 
 
