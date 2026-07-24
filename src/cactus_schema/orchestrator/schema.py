@@ -86,6 +86,7 @@ class RunResponse(FastAPICompatibleWizard):
     playlist_runs: list[PlaylistRunInfo] | None = None  # All runs in playlist with status
     classes: list[str] | None = None  # Compliance classes for this run's test procedure
     immediate_start: bool = False  # True if the test procedure has no pre-start phase
+    run_group_id: int | None = None  # The run group this run belongs to
 
 
 @dataclass
@@ -93,7 +94,7 @@ class UpdatePlaylistRequest(FastAPICompatibleWizard):
     """The desired upcoming (not-yet-run) tail of an executing playlist, in order. The existing upcoming
     runs are deleted and recreated from this list; completed/active runs are unaffected."""
 
-    test_procedure_ids: list[TestProcedureId]
+    test_procedure_ids: list[str]
     expected_active_run_id: int  # Run id the caller believes is active - mismatch means the playlist advanced (409)
 
 
