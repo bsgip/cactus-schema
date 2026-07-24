@@ -76,6 +76,10 @@ class TimelineStatus(JSONWizard):
     data_streams: list[TimelineDataStreamEntry]  # The set of data streams that should be rendered on the timeline
     set_max_w: int | None  # The currently set set_max_w (if any)
     now_offset: str  # The name of the DataStreamPoint.offset that corresponds with "now" (when this was calculated)
+    upper_max_w: int | None = None  # Effective device max for export/discharge (watts)
+    upper_max_label: str | None = None  # Field that upper_max_w was sourced from, e.g. "setMaxDischargeRateW"
+    lower_max_w: int | None = None  # Effective device max for import/charge (watts)
+    lower_max_label: str | None = None  # Field that lower_max_w was sourced from, e.g. "setMaxChargeRateW"
 
 
 @dataclass
