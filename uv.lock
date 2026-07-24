@@ -63,7 +63,6 @@ wheels = [
 name = "cactus-schema"
 source = { editable = "." }
 dependencies = [
-    { name = "cactus-test-definitions" },
     { name = "dataclass-wizard" },
 ]
 
@@ -90,7 +89,6 @@ requires-dist = [
     { name = "assertical", marker = "extra == 'test'" },
     { name = "bandit", marker = "extra == 'dev'" },
     { name = "build", marker = "extra == 'build'" },
-    { name = "cactus-test-definitions", specifier = ">=1.9.0" },
     { name = "coverage", marker = "extra == 'dev'" },
     { name = "dataclass-wizard", specifier = ">=0.35.0,<1" },
     { name = "pytest", marker = "extra == 'test'" },
@@ -101,20 +99,6 @@ requires-dist = [
     { name = "ty", marker = "extra == 'dev'" },
 ]
 provides-extras = ["dev", "test", "build"]
-
-[[package]]
-name = "cactus-test-definitions"
-version = "1.14.2"
-source = { registry = "https://pypi.org/simple" }
-dependencies = [
-    { name = "dataclass-wizard" },
-    { name = "pyyaml" },
-    { name = "pyyaml-include" },
-]
-sdist = { url = "https://files.pythonhosted.org/packages/fb/46/6a1e8d41f15e8a47dc2787e0b0682990198226e7966d49c613a7f373e3d4/cactus_test_definitions-1.14.2.tar.gz", hash = "sha256:d68d2d27207d505f0fb2ae3fcee254f8f06ee00d4bf1f0c8e7baa9f3d5a3cf11", size = 169556, upload-time = "2026-05-13T05:40:40.95Z" }
-wheels = [
-    { url = "https://files.pythonhosted.org/packages/ba/3d/762b0d030deb11fdcfd6e0dc738bd60cf6dc7cbcada9d14ed4f18c5f1e63/cactus_test_definitions-1.14.2-py3-none-any.whl", hash = "sha256:abd8e0afad8d7463035deda98ca5d80265f467f4af95b376e62d3c764e4cf278", size = 335140, upload-time = "2026-05-13T05:40:38.313Z" },
-]
 
 [[package]]
 name = "certifi"
@@ -386,15 +370,6 @@ source = { registry = "https://pypi.org/simple" }
 sdist = { url = "https://files.pythonhosted.org/packages/bf/89/780e11f9588d9e7128a3f87788354c7946a9cbb1401ad38a48c4db9a4f07/execnet-2.1.2.tar.gz", hash = "sha256:63d83bfdd9a23e35b9c6a3261412324f964c2ec8dcd8d3c6916ee9373e0befcd", size = 166622, upload-time = "2025-11-12T09:56:37.75Z" }
 wheels = [
     { url = "https://files.pythonhosted.org/packages/ab/84/02fc1827e8cdded4aa65baef11296a9bbe595c474f0d6d758af082d849fd/execnet-2.1.2-py3-none-any.whl", hash = "sha256:67fba928dd5a544b783f6056f449e5e3931a5c378b128bc18501f7ea79e296ec", size = 40708, upload-time = "2025-11-12T09:56:36.333Z" },
-]
-
-[[package]]
-name = "fsspec"
-version = "2026.4.0"
-source = { registry = "https://pypi.org/simple" }
-sdist = { url = "https://files.pythonhosted.org/packages/d5/8d/1c51c094345df128ca4a990d633fe1a0ff28726c9e6b3c41ba65087bba1d/fsspec-2026.4.0.tar.gz", hash = "sha256:301d8ac70ae90ef3ad05dcf94d6c3754a097f9b5fe4667d2787aa359ec7df7e4", size = 312760, upload-time = "2026-04-29T20:42:38.635Z" }
-wheels = [
-    { url = "https://files.pythonhosted.org/packages/d5/0c/043d5e551459da400957a1395e0febbf771446ff34291afcbe3d8be2a279/fsspec-2026.4.0-py3-none-any.whl", hash = "sha256:11ef7bb35dab8a394fde6e608221d5cf3e8499401c249bebaeaad760a1a8dec2", size = 203402, upload-time = "2026-04-29T20:42:36.842Z" },
 ]
 
 [[package]]
@@ -741,19 +716,6 @@ wheels = [
     { url = "https://files.pythonhosted.org/packages/da/92/1446574745d74df0c92e6aa4a7b0b3130706a4142b2d1a5869f2eaa423c6/pyyaml-6.0.3-cp314-cp314t-musllinux_1_2_x86_64.whl", hash = "sha256:16249ee61e95f858e83976573de0f5b2893b3677ba71c9dd36b9cf8be9ac6d65", size = 829923, upload-time = "2025-09-25T21:32:54.537Z" },
     { url = "https://files.pythonhosted.org/packages/f0/7a/1c7270340330e575b92f397352af856a8c06f230aa3e76f86b39d01b416a/pyyaml-6.0.3-cp314-cp314t-win_amd64.whl", hash = "sha256:4ad1906908f2f5ae4e5a8ddfce73c320c2a1429ec52eafd27138b7f1cbe341c9", size = 174062, upload-time = "2025-09-25T21:32:55.767Z" },
     { url = "https://files.pythonhosted.org/packages/f1/12/de94a39c2ef588c7e6455cfbe7343d3b2dc9d6b6b2f40c4c6565744c873d/pyyaml-6.0.3-cp314-cp314t-win_arm64.whl", hash = "sha256:ebc55a14a21cb14062aa4162f906cd962b28e2e9ea38f9b4391244cd8de4ae0b", size = 149341, upload-time = "2025-09-25T21:32:56.828Z" },
-]
-
-[[package]]
-name = "pyyaml-include"
-version = "2.2"
-source = { registry = "https://pypi.org/simple" }
-dependencies = [
-    { name = "fsspec" },
-    { name = "pyyaml" },
-]
-sdist = { url = "https://files.pythonhosted.org/packages/0f/8c/4bdc1bd9676e9eb49237b3750562e9794b7585281448909fa1837c92ca27/pyyaml_include-2.2.tar.gz", hash = "sha256:6f0c7e2ac56cdd9cc305b04122817b55514e6ce8584869fae2bc2a4ef2e0d40f", size = 29854, upload-time = "2024-11-09T09:36:16.915Z" }
-wheels = [
-    { url = "https://files.pythonhosted.org/packages/56/1f/ae83ff547e70cd3aeefe2ebaeeef41c4e1fd5ed2453396d249d17c3a7ead/pyyaml_include-2.2-py3-none-any.whl", hash = "sha256:489fff69f78bad8b9509d006297a0140fd91382a66775b8b1da0ce7e126c1815", size = 29565, upload-time = "2024-11-09T09:36:15.241Z" },
 ]
 
 [[package]]
