@@ -5,6 +5,8 @@ from enum import StrEnum, auto
 from dataclass_wizard import JSONWizard
 from dataclass_wizard.enums import LetterCase
 
+from cactus_schema.runner.schema import WarningEntry
+
 HEADER_USER_NAME = "CACTUS-User-Name"
 HEADER_TEST_ID = "CACTUS-Test-Id"
 HEADER_RUN_ID = "CACTUS-Run-Id"
@@ -87,6 +89,8 @@ class RunResponse(FastAPICompatibleWizard):
     classes: list[str] | None = None  # Compliance classes for this run's test procedure
     immediate_start: bool = False  # True if the test procedure has no pre-start phase
     run_group_id: int | None = None  # The run group this run belongs to
+    warning_count: int | None = None  # Number of warnings raised (None means unknown, e.g. v1.3 runner)
+    warnings: list[WarningEntry] | None = None  # Full warnings list; populated on single-run detail responses only
 
 
 @dataclass
