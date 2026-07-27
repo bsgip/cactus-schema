@@ -29,6 +29,7 @@ from cactus_schema.runner.schema import (
     TestUser,
     TimelineDataStreamEntry,
     TimelineStatus,
+    WarningEntry,
 )
 
 __all__ = [
@@ -59,4 +60,5 @@ __all__ = [
     "TestUser",
     "TimelineDataStreamEntry",
     "TimelineStatus",
+    "WarningEntry",
 ]
