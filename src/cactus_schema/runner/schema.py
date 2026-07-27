@@ -58,7 +58,7 @@ class PreconditionCheckEntry(JSONWizard):
 
 @dataclass
 class WarningEntry(JSONWizard):
-    type: str  # stable identifier, dotted category prefix e.g. "der-settings.set-max-w-varied"
+    type: str  # stable identifier, e.g. "set-max-w-varied", "over-polling"
     description: str  # short human line for lists/badges
     message: str  # full detail: values seen, timestamps, why it matters / production impact
     timestamp: datetime  # when first emitted (tz-aware UTC)
