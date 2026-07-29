@@ -89,8 +89,10 @@ class RunResponse(FastAPICompatibleWizard):
     classes: list[str] | None = None  # Compliance classes for this run's test procedure
     immediate_start: bool = False  # True if the test procedure has no pre-start phase
     run_group_id: int | None = None  # The run group this run belongs to
-    warning_count: int | None = None  # Number of warnings raised (None means unknown/not yet finalised)
-    warnings: list[WarningEntry] | None = None  # Full warnings list; populated on single-run detail responses only
+    total_warning_count: int | None = None  # Number of warnings raised (None means unknown/not yet finalised)
+    # Warnings list; populated on single-run detail responses only. May be capped/paginated rather than
+    # exhaustive - total_warning_count is the source of truth for the actual count.
+    recent_warnings: list[WarningEntry] | None = None
 
 
 @dataclass

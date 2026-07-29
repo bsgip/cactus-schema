@@ -56,7 +56,7 @@ class PreconditionCheckEntry(JSONWizard):
     details: str
 
 
-@dataclass
+@dataclass(frozen=True)
 class WarningEntry(JSONWizard):
     type: str  # stable identifier, e.g. "set-max-w-varied", "over-polling"
     description: str  # short line for lists/badges
