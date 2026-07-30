@@ -56,6 +56,14 @@ class PreconditionCheckEntry(JSONWizard):
     details: str
 
 
+@dataclass(frozen=True)
+class WarningEntry(JSONWizard):
+    type: str  # stable identifier, e.g. "set-max-w-varied", "over-polling"
+    description: str  # short line for lists/badges
+    message: str  # full detail: values seen, timestamps, why it matters
+    timestamp: datetime  # when first emitted (tz-aware UTC)
+
+
 @dataclass
 class DataStreamPoint(JSONWizard):
     watts: int | None  # The data point value (in watts)
@@ -183,6 +191,7 @@ class RunnerStatus(JSONWizard):
     log_envoy: str  # Snapshot of the current envoy logs
     criteria: list[CriteriaEntry] = field(default_factory=list)
     precondition_checks: list[PreconditionCheckEntry] = field(default_factory=list)
+    warnings: list[WarningEntry] = field(default_factory=list)
     instructions: list[str] | None = field(default=None)
     test_procedure_name: str = field(default="-")  # '-' represents no active procedure
     step_status: dict[str, StepEventStatus] | None = field(default=None)

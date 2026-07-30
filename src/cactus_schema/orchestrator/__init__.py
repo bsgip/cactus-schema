@@ -1,4 +1,5 @@
 import cactus_schema.orchestrator.uri as uri
+from cactus_schema.common import ProceedResponse
 from cactus_schema.orchestrator.schema import (
     HEADER_GROUP_ID,
     HEADER_GROUP_NAME,
@@ -17,7 +18,6 @@ from cactus_schema.orchestrator.schema import (
     InitRunResponse,
     Pagination,
     PlaylistRunInfo,
-    ProceedResponse,
     RunArtifactMultipleRequest,
     RunGroupRequest,
     RunGroupResponse,
