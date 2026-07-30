@@ -1,4 +1,8 @@
 import cactus_schema.runner.uri as uri
+
+# ProceedResponse is used by both the runner AND the orchestrator, so it lives in cactus_schema.common
+# (rather than either package's own schema module) and is re-exported here for clients of the runner.
+from cactus_schema.common import ProceedResponse
 from cactus_schema.runner.schema import (
     ClientInteraction,
     ClientInteractionType,
@@ -30,6 +34,7 @@ from cactus_schema.runner.schema import (
 
 __all__ = [
     "uri",
+    "ProceedResponse",
     "ClientInteraction",
     "ClientInteractionType",
     "CriteriaEntry",

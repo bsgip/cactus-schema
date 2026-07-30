@@ -2,9 +2,7 @@ from dataclasses import dataclass
 from datetime import datetime
 from enum import StrEnum, auto
 
-from dataclass_wizard import JSONWizard
-from dataclass_wizard.enums import LetterCase
-
+from cactus_schema.common import FastAPICompatibleWizard
 from cactus_schema.runner.schema import WarningEntry
 
 HEADER_USER_NAME = "CACTUS-User-Name"
@@ -20,16 +18,6 @@ class RunStatusResponse(StrEnum):
     finalised = auto()
     provisioning = auto()
     skipped = auto()
-
-
-class FastAPICompatibleWizard(JSONWizard):
-    """This is our way of generating JSON that FastAPI should happily interact with directly as a dataclass"""
-
-    class Meta(JSONWizard.Meta):
-        key_transform_with_dump = LetterCase.SNAKE
-        key_transform_with_load = LetterCase.SNAKE
-        encode_enum_as_value = True
-        datetime_to = "iso"
 
 
 @dataclass
@@ -89,10 +77,9 @@ class RunResponse(FastAPICompatibleWizard):
     classes: list[str] | None = None  # Compliance classes for this run's test procedure
     immediate_start: bool = False  # True if the test procedure has no pre-start phase
     run_group_id: int | None = None  # The run group this run belongs to
-    total_warning_count: int | None = None  # Number of warnings raised (None means unknown/not yet finalised)
-    # Warnings list; populated on single-run detail responses only. May be capped/paginated rather than
-    # exhaustive - total_warning_count is the source of truth for the actual count.
-    recent_warnings: list[WarningEntry] | None = None
+    # Warnings raised during the run. None means unknown/not yet finalised; [] means finalised, clean.
+    # Deduped by type at emission (see WarningEntry), so this stays small - safe to send on every response.
+    warnings: list[WarningEntry] | None = None
 
 
 @dataclass
@@ -223,11 +210,6 @@ class UserUpdateRequest(FastAPICompatibleWizard):
 class UserConfigurationResponse(FastAPICompatibleWizard):
     subscription_domain: str  # What domain will outgoing notifications be scoped to? Empty string = no value configured
     pen: int
-
-
-@dataclass
-class ProceedResponse(FastAPICompatibleWizard):
-    handled: bool  # If true, the proceed signal matched a listener and moved the test to the next step
 
 
 @dataclass
