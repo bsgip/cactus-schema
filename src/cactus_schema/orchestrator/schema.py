@@ -157,6 +157,15 @@ class CSIPAusVersionResponse(FastAPICompatibleWizard):
 
 
 @dataclass
+class DeployReleaseResponse(FastAPICompatibleWizard):
+    """A single record of a cactus-deploy release being deployed to this environment. Append only - a rollback
+    appends a new record with the older tag, so ordering is by created_at, not by release_tag."""
+
+    release_tag: str  # The image tag of the deployed cactus-orchestrator, eg "177"
+    created_at: datetime  # When this release was deployed
+
+
+@dataclass
 class TestProcedureResponse(FastAPICompatibleWizard):
     __test__ = False
     test_procedure_id: str

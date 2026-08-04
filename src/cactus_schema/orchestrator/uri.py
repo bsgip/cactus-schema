@@ -21,6 +21,8 @@ CertificateRunGroups = "/run_group/certificate"
 
 Config = "/config"
 
+DeployReleaseList = "/deploy_release"
+
 ComplianceRequestList = "/compliance_request/"
 ComplianceRequest = "/compliance_request/{compliance_request_id}"
 ComplianceRequestArtifact = "/compliance_request/{compliance_request_id}/artifact"
