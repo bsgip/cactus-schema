@@ -198,6 +198,7 @@ class RunnerStatus(JSONWizard):
     request_history: list[RequestEntry] = field(default_factory=list)
     timeline: TimelineStatus | None = None  # Streaming timeline data snapshot
     end_device_metadata: EndDeviceMetadata | None = None  # Snapshot of current active end device (if any)
+    timestamp_finished: datetime | None = None  # When did the test finish (None if it hasn't finished yet)
 
 
 @dataclass
