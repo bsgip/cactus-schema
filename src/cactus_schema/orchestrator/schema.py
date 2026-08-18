@@ -224,15 +224,18 @@ class UserConfigurationResponse(FastAPICompatibleWizard):
 @dataclass
 class ComplianceRequestRequest(FastAPICompatibleWizard):
     csip_aus_version: str
+    cactus_version: str
     witnessed_at: datetime
     classes: set[str]
     runs: set[int]
     der_brand: str
     der_oem: str
     der_series: str
-    der_representative_models: str
+    der_cec_listed_models: str
+    der_unlisted_models: str
+    der_white_labelled_models: str
     software_client_type: str
-    software_client_providers: str
+    software_client_name: str
     software_client_versions: str
     onsite_hardware_details: str
 
@@ -248,13 +251,16 @@ class ComplianceRequestResponse(FastAPICompatibleWizard):
     classes: set[str]
     runs: set[int]
     csip_aus_version: str
+    cactus_version: str
     witnessed_at: datetime
     der_brand: str
     der_oem: str
     der_series: str
-    der_representative_models: str
+    der_cec_listed_models: str
+    der_unlisted_models: str
+    der_white_labelled_models: str
     software_client_type: str
-    software_client_providers: str
+    software_client_name: str
     software_client_versions: str
     onsite_hardware_details: str
 
@@ -280,13 +286,16 @@ class AdminComplianceRequestResponse(FastAPICompatibleWizard):
     classes: set[str]
     runs: set[int]
     csip_aus_version: str
+    cactus_version: str
     witnessed_at: datetime
     der_brand: str
     der_oem: str
     der_series: str
-    der_representative_models: str
+    der_cec_listed_models: str
+    der_unlisted_models: str
+    der_white_labelled_models: str
     software_client_type: str
-    software_client_providers: str
+    software_client_name: str
     software_client_versions: str
     onsite_hardware_details: str
 
@@ -297,12 +306,15 @@ class ComplianceRequestUpdateRequest(FastAPICompatibleWizard):
     classes: set[str] | None = None
     runs: set[int] | None = None
     csip_aus_version: str | None = None
+    cactus_version: str | None = None
     witnessed_at: datetime | None = None
     der_brand: str | None = None
     der_oem: str | None = None
     der_series: str | None = None
-    der_representative_models: str | None = None
+    der_cec_listed_models: str | None = None
+    der_unlisted_models: str | None = None
+    der_white_labelled_models: str | None = None
     software_client_type: str | None = None
-    software_client_providers: str | None = None
+    software_client_name: str | None = None
     software_client_versions: str | None = None
     onsite_hardware_details: str | None = None
