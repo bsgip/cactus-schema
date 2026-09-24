@@ -44,7 +44,7 @@ class InitResponseBody(JSONWizard):
 
 @dataclass
 class CriteriaEntry(JSONWizard):
-    success: bool
+    success: bool | None  # None means the criteria isn't being evaluated (usually because it runs once at the end)
     type: str
     details: str
 
