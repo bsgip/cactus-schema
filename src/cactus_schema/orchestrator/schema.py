@@ -80,6 +80,9 @@ class RunResponse(FastAPICompatibleWizard):
     # Warnings raised during the run. None means unknown/not yet finalised; [] means finalised, clean.
     # Deduped by type at emission (see WarningEntry), so this stays small - safe to send on every response.
     warnings: list[WarningEntry] | None = None
+    # The certificate this run was created with (inherited from the run group at creation). None if that certificate
+    # has since been deleted.
+    certificate_id: int | None = None
 
 
 @dataclass
@@ -108,8 +111,28 @@ class RunGroupRequest(FastAPICompatibleWizard):
 
 
 @dataclass
-class GenerateClientCertificateRequest(FastAPICompatibleWizard):
+class CertificateRequest(FastAPICompatibleWizard):
+    """Generates a brand new certificate (owned by the requesting user)"""
+
+    name: str  # descriptive name
+    is_device_cert: bool  # If True - generate a device certificate. Otherwise an aggregator certificate
+
+
+@dataclass
+class CertificateResponse(FastAPICompatibleWizard):
+    certificate_id: int
+    name: str
     is_device_cert: bool
+    created_at: datetime  # When this certificate record was first created
+    generated_at: datetime  # When the certificate was most recently (re)generated
+    expires_at: datetime  # The not_valid_after of the current certificate
+    generation: int  # Incremented every time this certificate is regenerated
+    run_group_ids: list[int]  # The RunGroups that this certificate is currently assigned to
+
+
+@dataclass
+class RunGroupCertificateAssignRequest(FastAPICompatibleWizard):
+    certificate_id: int  # The certificate to assign to the RunGroup (replacing any existing assignment)
 
 
 @dataclass
@@ -132,9 +155,11 @@ class RunGroupResponse(FastAPICompatibleWizard):
     is_static_uri: bool
     static_uri: str | None  # What the static URI will be for this user (readonly and only set if is_static_uri is True)
 
+    # Details of the assigned certificate (all None if no certificate is assigned)
+    assigned_certificate_id: int | None
+    certificate_name: str | None
     is_device_cert: bool | None
-    certificate_id: int | None
-    certificate_created_at: datetime | None
+    certificate_created_at: datetime | None  # When the assigned certificate was most recently (re)generated
 
     total_runs: int  # How many runs live underneath this group
 
