@@ -16,8 +16,8 @@ AdminRunGroupCompliance = "/admin/run_group/{run_group_id}/artifact"
 AdminStats = "/admin/stats"
 
 CertificateAuthority = "/certificate/authority"
-CertificateRunGroup = "/run_group/{run_group_id}/certificate"
-CertificateRunGroups = "/run_group/certificate"
+CertificateList = "/certificate"
+Certificate = "/certificate/{certificate_id}"
 
 Config = "/config"
 
@@ -36,6 +36,7 @@ ProcedureRunGroupRunsList = "/procedure_runs/{run_group_id}/{test_procedure_id}"
 RunGroupList = "/run_group"
 RunGroup = "/run_group/{run_group_id}"
 RunGroupRunList = "/run_group/{run_group_id}/run"
+RunGroupCertificate = "/run_group/{run_group_id}/certificate"
 
 RunList = "/run"
 Run = "/run/{run_id}"
